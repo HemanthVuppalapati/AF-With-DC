@@ -1,9 +1,9 @@
-// USed to test the git
+// Used to test the git hub connection and to create a map of accounts and contacts
 public class AccountContactMapHandler {
 
 
     @AuraEnabled
-    public static void createAccounts(List<Account> accounts) {
+    public static void createAccounts(List<Account> accounts) { 
         if (accounts == null || accounts.isEmpty()) {
             throw new AuraHandledException('No records to insert');
         }
