@@ -1,0 +1,244 @@
+/* Wrapper */
+.timeline-wrapper {
+    padding: 1rem 0.8rem;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Fade effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* DATE SECTION */
+.date-section {
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* Common timeline item row */
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 1.4rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.date-row .timeline-point {
+    top: 8px;
+}
+
+.appointment-row {
+    margin-bottom: 1.5rem;
+}
+.timeline-dot {
+    width: 14px;
+    height: 14px;
+    background: white;                    /* inside = white */
+    border: 4px solid #0070d2;             /* blue ring – Salesforce blue */
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px white;           /* optional: tiny white halo for crisp look */
+    flex-shrink: 0;
+    z-index: 3;
+}
+.timeline-point {
+    width: 16px;
+    height: 14px;
+    background: white;
+    border: 4px solid #1b96ff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px white;
+    position: absolute;
+
+    /* Center the dot directly on vertical line (which is at left: 7px) */
+    left: 16px;       
+    transform: translateX(-50%);  /* perfectly centers it */
+
+    top: 38px;
+    z-index: 5;
+}
+
+
+/* Vertical timeline - Blue line */
+.timeline-line {
+    border-left: 3px solid #1b96ff;
+    position: absolute;
+    top: 60px;;
+    left: 16px;
+    box-shadow: 0 0 6px rgba(27,150,255,0.3);
+    height: calc(100% - 70px);
+}
+
+/* Date Header */
+.date-row {
+    margin-bottom: 0.5rem;
+}
+
+.date-header {
+    flex: 1;
+    padding-left: 2.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.date-header:hover .date-pill {
+    background: linear-gradient(135deg, #5a9eff, #167dff);
+    transform: scale(1.02);
+}
+
+/* Gradient pill */
+.date-pill {
+    background: linear-gradient(135deg, #6bb4ff, #1b96ff);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.date-pill .chevron {
+    margin-left: auto;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+/* Appointment Card - Glass effect */
+.glass {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+}
+
+/* Card */
+.appointment-card {
+    border-radius: 12px;
+    padding: 0;
+    width: 100%;
+    border-left: 5px solid #1b96ff;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    margin-left: 2rem; /* Adjust for point overlap */
+    overflow: hidden;
+}
+
+.appointment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Time Row - Light blue header */
+.time-row {
+    background: #e3f2fd;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #003e70;
+}
+
+.pipe {
+    margin: 0 0.5rem;
+    color: #666;
+    font-weight: normal;
+}
+
+.product {
+    font-size: 1rem;
+    color: #555;;
+    font-weight: 500;
+}
+
+/* Icon Container - Transparent background for black icons */
+.icon-container {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.icon {
+    color: #000;
+    width: 12px;
+    height: 12px;
+}
+
+/* Collapsed Details */
+.collapsed-details {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(27,150,255,0.05);
+    transition: all 0.2s ease;
+}
+
+.collapsed-subject {
+    font-weight: 600;
+    color: #1b96ff;
+    font-size: 0.95rem;
+    flex: 1;
+}
+
+/* Details */
+.details {
+    padding: 0.5rem 1rem 1rem;
+}
+
+/* Call Row */
+.call-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.subject {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #0070d2;
+    text-decoration: none;
+    flex: 1;
+}
+
+.subject:hover {
+    text-decoration: underline;
+}
+
+/* Location Row */
+.location-row {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.25rem;
+}
+
+.location-text {
+    flex: 1;
+    color: #666;
+}
+
+/* EMPTY, ERROR */
+.loading, .error, .no-data {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.error {
+    color: #c23934;
+    font-weight: bold;
+}

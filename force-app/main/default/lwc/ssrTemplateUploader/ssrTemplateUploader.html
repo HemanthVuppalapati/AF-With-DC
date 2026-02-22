@@ -1,0 +1,74 @@
+<template>
+    <lightning-card title="SSR Related List">
+        <div class="slds-m-around_medium">
+            <!-- Download Button -->
+            <lightning-button
+                label="Download Template"
+                icon-name="utility:download"
+                onclick={downloadTemplate}>
+            </lightning-button>
+
+            <!-- Upload Button -->
+            <lightning-button
+                class="slds-m-left_small"
+                label="Upload Template"
+                icon-name="utility:upload"
+                onclick={handleUploadClick}>
+            </lightning-button>
+
+            <!-- Hidden File Input -->
+            <input
+                type="file"
+                accept=".xlsx"
+                class="slds-hide"
+                data-id="fileInput"
+                onchange={handleFileChange} />
+        </div>
+    </lightning-card>
+
+    <!-- Modal -->
+    <template if:true={showModal}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        Upload SSR Records
+                    </h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-datatable
+                        key-field="id"
+                        data={records}
+                        columns={columns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <lightning-button
+                        label="Delete"
+                        icon-name="utility:delete"
+                        onclick={handleDelete}>
+                    </lightning-button>
+
+                    <lightning-button
+                        label="Cancel"
+                        icon-name="utility:close"
+                        onclick={closeModal}
+                        class="slds-m-left_small">
+                    </lightning-button>
+
+                    <lightning-button
+                        variant="brand"
+                        label="Save Changes"
+                        icon-name="utility:save"
+                        onclick={saveChanges}
+                        class="slds-m-left_small">
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

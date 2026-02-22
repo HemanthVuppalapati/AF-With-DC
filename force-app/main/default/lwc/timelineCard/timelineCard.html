@@ -1,0 +1,117 @@
+<template>
+    <lightning-card title={cardTitle} icon-name="standard:task">
+        <div class="timeline-wrapper">
+
+            <!-- Loading -->
+            <template if:true={loading}>
+                <div class="loading">Loading timeline...</div>
+            </template>
+
+            <!-- Error -->
+            <template if:true={error}>
+                <div class="error">{error}</div>
+            </template>
+
+            <!-- No Appointments -->
+            <template if:true={hasNoAppointments}>
+                <div class="no-data">
+                    <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                    <p>No appointments found.</p>
+                </div>
+            </template>
+
+            <!-- Appointments -->
+            <template if:true={hasAppointments}>
+
+              <div class="timeline-point"></div>
+                            <div class="timeline-line"></div>
+                            
+                <template for:each={groups} for:item="group">
+                    <div key={group.date} class="date-section">
+
+                        <div class="timeline-item date-row" onclick={toggleDate} data-date={group.date}>
+                           
+                            <div class="date-header">
+                                <span class="date-pill">
+                                    {group.date}
+                                    <lightning-icon 
+                                        if:true={group.expanded} 
+                                        icon-name="utility:chevronup" 
+                                        size="x-small" 
+                                        class="chevron">
+                                    </lightning-icon>
+                                    <lightning-icon 
+                                        if:false={group.expanded} 
+                                        icon-name="utility:chevrondown" 
+                                        size="x-small" 
+                                        class="chevron">
+                                    </lightning-icon>
+                                </span>
+                            </div>
+                        </div>
+
+                        <template if:true={group.expanded}>
+                             
+
+                            <template for:each={group.items} for:item="item">
+                                <div key={item.Id} class="timeline-item appointment-row" onclick={toggleAppointment} data-id={item.Id}>
+
+                                  
+
+                                    <div class="appointment-card glass">
+
+                                        <div class="time-row">
+                                            <span class="time">{item.time}</span>
+                                            <span class="pipe"> | </span>
+                                            <span class="product">{item.product}</span>
+                                        </div>
+
+                                        <template if:true={item.expanded}>
+                                            <div class="details">
+                                                <div class="call-row">
+                                                    <div class="icon-container call-icon-container">
+                                                         <img src={callIcon} class="icon" alt="Call"/>
+                                    
+                                                    </div>
+                                                    <a href={item.link} target="_blank" class="subject">
+                                                        {item.subject}
+                                                    </a>
+                                                </div>
+
+                                                <div class="location-row">
+                                                    <template if:true={item.street}>
+                                                        <div class="icon-container location-icon-container">
+                                                            <img src={mapIcon} class="icon" alt="Location"/>
+                                                        </div>
+                                                    </template>
+                                                    <template if:false={item.street}>
+                                                        <div class="icon-container call-icon-container">
+                                                            <lightning-icon icon-name="standard:phone" size="x-small" class="icon"></lightning-icon>
+                                                        </div>
+                                                    </template>
+                                                    <span class="location-text">{item.locationText}</span>
+                                                </div>
+                                            </div>
+                                        </template>
+
+                                        <template if:false={item.expanded}>
+                                            <div class="collapsed-details">
+                                                <div class="icon-container call-icon-container">
+                                                    <lightning-icon icon-name="standard:phone" size="x-small" class="icon"></lightning-icon>
+                                                </div>
+                                                <span class="collapsed-subject">{item.subjectShort}</span>
+                                            </div>
+                                        </template>
+
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+
+                    </div>
+                </template>
+
+            </template>
+        </div>
+    </lightning-card>
+</template>

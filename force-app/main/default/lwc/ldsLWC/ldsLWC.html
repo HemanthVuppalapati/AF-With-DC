@@ -1,0 +1,57 @@
+<template>
+    
+    <lightning-card>
+    <!-- <lightning-card title="Opportunity AI Insights"> -->
+
+        <!-- <template if:true={closedWon}>
+            <div class="slds-p-around_medium">
+                <lightning-formatted-text value={stageName}></lightning-formatted-text>
+            </div>
+        </template> -->
+
+        <template if:false={closedWon}>
+            <div class="container">
+                <h2 class="title">Opportunity Win Prediction</h2>  
+                <div class="slds-p-around_medium">
+                    <lightning-button 
+                        label="Generate Insights"
+                        variant="brand"
+                        onclick={handleClick}
+                        disabled={loading}>
+                    </lightning-button>
+                </div>        
+            </div>
+        
+        
+
+        <!-- Spinner -->
+        <template if:true={loading}>
+            <lightning-spinner size="medium"></lightning-spinner>
+        </template>
+
+        <!-- Result -->
+        <template if:true={isEditingView}>
+            <div class="slds-p-around_medium">
+                <lightning-formatted-text value={result}></lightning-formatted-text>
+            </div>
+        </template>
+
+        
+        <template if:true={isEditing}>
+                <lightning-input-rich-text 
+                    label="Edit Text" 
+                    value={result} 
+                    onchange={handleTextChange}>
+                </lightning-input-rich-text>
+                <lightning-button label="Save" onclick={handleUpdatedes}></lightning-button>
+                <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+            </template>
+
+            <template if:false={isEditing}>
+                <!-- <p>{result}</p> -->
+                <lightning-button label="Rewrite" onclick={handleEdit}></lightning-button>
+            </template>
+
+        </template>       
+    </lightning-card> 
+</template>

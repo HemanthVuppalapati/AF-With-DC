@@ -1,0 +1,12 @@
+<template>
+    <select class="slds-select" onchange={handleChange}>
+        <option value="">--None--</option>
+        <template for:each={options} for:item="opt">
+            <option 
+                key={opt.value} 
+                value={opt.value}>
+                {opt.label}
+            </option>
+        </template>
+    </select>
+</template>

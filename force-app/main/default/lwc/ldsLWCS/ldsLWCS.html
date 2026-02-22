@@ -1,0 +1,30 @@
+<template>
+    <div class="container">
+        <h2 class="title">Opportunity Win Prediction</h2>
+        
+    </div>
+    <lightning-card title="Opportunity AI Insights">
+        
+        <div class="slds-p-around_medium">
+            <lightning-button 
+                label="Generate Insights"
+                variant="brand"
+                onclick={handleClick}
+                disabled={loading}>
+            </lightning-button>
+        </div>
+
+        <!-- Spinner -->
+        <template if:true={loading}>
+            <lightning-spinner size="medium"></lightning-spinner>
+        </template>
+
+        <!-- Result -->
+        <template if:true={result}>
+            <div class="slds-p-around_medium">
+                <lightning-formatted-text value={result}></lightning-formatted-text>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

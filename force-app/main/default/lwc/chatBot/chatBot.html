@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="AI ChatBot" icon-name="standard:live_chat">
+        <div class="slds-p-around_medium">
+            <!-- User Input -->
+            <lightning-input
+                label="Your Message"
+                value={userMessage}
+                onchange={handleInputChange}
+                onkeydown={handleKeyDown}
+                placeholder="Type your message here..."
+            ></lightning-input>
+            <lightning-button
+                variant="brand"
+                label="Send"
+                onclick={handleSend}
+                class="slds-m-top_small"
+                disabled={isSendDisabled}
+            ></lightning-button>
+
+
+            <!-- Loading Spinner -->
+            <template if:true={isSending}>
+                <div class="slds-m-top_medium slds-text-align_center">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Output -->
+            <template if:true={agentResponse}>
+                <div class="slds-m-top_medium slds-box slds-theme_default">
+                    <p><strong>Message:</strong> {agentResponse}</p>
+                    <p><strong>SessionId:</strong> {sessionId}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

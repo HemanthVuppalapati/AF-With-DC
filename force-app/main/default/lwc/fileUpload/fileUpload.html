@@ -1,0 +1,30 @@
+<template>
+    <lightning-card  variant="Narrow"  title="File Upload" icon-name="standard:account">
+        <template if:true={isLoading}>
+    <div class="spinner-overlay slds-is-fixed slds-grid_align-center slds-grid slds-media_center">
+      <lightning-spinner alternative-text="Saving..." size="medium" variant="brand"></lightning-spinner>
+    </div>
+  </template>
+    <div class="actions-wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="button-container slds-grid slds-media_center">
+                <button class="slds-button myapp-button slds-media_center custom-download-btn slds-shrink-none" onclick={onDowloadFile}>
+                    <span class="btn-line">Download Template</span>
+                </button>
+
+            <div class="custom-upload slds-m-left_xx-small">
+                <label for="uploadInput3" class="custom-upload-btn slds-shrink-none slds-media_center">
+                        <span class="upload-icon-wrapper slds-var-m-right_xx-small">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M13.0577 8.34585H12.25C12.0346 8.34585 11.8462 8.56124 11.8462 8.74972V11.4422C11.8462 11.6576 11.6577 11.8461 11.4423 11.8461H2.5577C2.34231 11.8461 2.15385 11.6576 2.15385 11.4422V8.74972C2.15385 8.56124 1.96539 8.34585 1.75001 8.34585H0.942314C0.726929 8.34585 0.538467 8.56124 0.538467 8.74972V12.3846C0.538467 12.9769 1.02308 13.4616 1.61539 13.4616H12.3846C12.9769 13.4616 13.4615 12.9769 13.4615 12.3846V8.74972C13.4615 8.56124 13.2731 8.34585 13.0577 8.34585ZM7.26928 0.646186C7.10774 0.484637 6.86543 0.484637 6.70389 0.646186L3.06928 4.28104C2.90774 4.44259 2.90774 4.68491 3.06928 4.84646L3.63466 5.41188C3.7962 5.57343 4.03851 5.57343 4.20005 5.41188L5.70774 3.90409C5.86928 3.74254 6.19235 3.85024 6.19235 4.09256V9.80063C6.19235 10.016 6.35389 10.2045 6.56928 10.2045H7.37697C7.59235 10.2045 7.80774 9.9891 7.80774 9.80063V4.11949C7.80774 3.87717 8.07697 3.76947 8.26543 3.93102L9.77312 5.43881C9.93466 5.60035 10.177 5.60035 10.3385 5.43881L10.9039 4.87338C11.0654 4.71183 11.0654 4.46951 10.9039 4.30796L7.26928 0.646186Z"
+                                fill="#0250D9" />
+                        </svg>
+                        </span>
+                        <span class="upload-label slds-text-align_center">Upload Template</span>
+                </label>
+                <input type="file" id="uploadInput3" accept=".xlsx" onchange={onUploadFile} class="hidden-input slds-hide" />
+            </div>
+        </div>
+    </div>    
+    </lightning-card> 
+</template>

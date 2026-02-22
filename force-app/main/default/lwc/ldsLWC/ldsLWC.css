@@ -1,0 +1,32 @@
+.container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.time-box {
+    text-align: center;
+}
+
+.time-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0284fe; /* Blue color from the image */
+}
+
+.time-label {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #444;
+}

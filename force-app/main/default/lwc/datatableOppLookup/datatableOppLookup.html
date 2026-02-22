@@ -1,0 +1,23 @@
+<template>
+    <div class="slds-grid slds-grid_vertical-align-center">
+        <div class="slds-col slds-grow">
+            <lightning-record-picker
+                label="Select Opportunity"
+                variant="label-hidden"
+                object-api-name={objectApiName}
+                value={value}
+                placeholder={placeholder}
+                onchange={handleChange}>
+            </lightning-record-picker>
+        </div>
+        <template if:true={showAddNew}>
+            <div class="slds-col slds-no-flex slds-m-left_x-small">
+                <lightning-button-icon 
+                    icon-name="utility:add" 
+                    variant="border-filled" 
+                    onclick={handleAddNew}>
+                </lightning-button-icon>
+            </div>
+        </template>
+    </div>
+</template>
