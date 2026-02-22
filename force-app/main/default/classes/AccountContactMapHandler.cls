@@ -1,3 +1,4 @@
+// USed to test the git
 public class AccountContactMapHandler {
 
 
@@ -11,7 +12,7 @@ public class AccountContactMapHandler {
 
     // Method to fetch accounts and related contacts and return a Map<Id, List<Contact>>
     public static Map<Id, List<Contact>> getAccountContactsMap(List<Id> accountIds) {
-        // Initialize the map
+        // Initialize the map and send
         Map<Id, List<Contact>> accConMap = new Map<Id, List<Contact>>();
         
         // Query accounts with related contacts
