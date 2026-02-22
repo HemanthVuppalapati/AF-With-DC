@@ -1,9 +1,7 @@
-// Used to test the git hub connection and to create a map of accounts and contacts
 public class AccountContactMapHandler {
 
-
     @AuraEnabled
-    public static void createAccounts(List<Account> accounts) { 
+    public static void createAccounts(List<Account> accounts) {
         if (accounts == null || accounts.isEmpty()) {
             throw new AuraHandledException('No records to insert');
         }
@@ -12,7 +10,7 @@ public class AccountContactMapHandler {
 
     // Method to fetch accounts and related contacts and return a Map<Id, List<Contact>>
     public static Map<Id, List<Contact>> getAccountContactsMap(List<Id> accountIds) {
-        // Initialize the map and send
+        // Initialize the map
         Map<Id, List<Contact>> accConMap = new Map<Id, List<Contact>>();
         
         // Query accounts with related contacts
